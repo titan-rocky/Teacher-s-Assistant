@@ -114,15 +114,18 @@ def forgotpswd(root):
 				else:
 					pin=tk.Label(passframe,text='Password does not match',font=('garamond',12),fg=label_fg,bg=bgd);pin.grid(row=4,column=0,columnspan=3)
 
-				
+			
+
 			changebutt=tk.Button(passframe,text='Change',command= lambda : fame(passname.get(),passname2.get(),gz,passname.get()),padx=30,font=('garamond',15),fg='#124183',bg='#c4b480',activeforeground='#c4b480',activebackground=bgd);changebutt.grid(row=3,column=0,columnspan=3,padx=180,pady=10)
 
-
-
-
-
+	def quitb():
+		fps.destroy()
+		root.destroy()
+		from login_page import login
+		login()
+				
 	butt=tk.Button(userframe,text='Confirm',command=jam,padx=30,font=('garamond',15),fg='#124183',bg='#c4b480',activeforeground='#c4b480',activebackground=bgd);butt.grid(row=4,column=0,padx=150,columnspan=3,pady=10,)
-
+	butt=tk.Button(userframe,text='Login Page',command=quitb,padx=30,font=('garamond',15),fg='#124183',bg='#c4b480',activeforeground='#c4b480',activebackground=bgd);butt.grid(row=5,column=0,padx=150,columnspan=3,pady=10,)
 	def onclose():
 		d=messagebox.askokcancel('Quit','Do you want to quit ?')
 		if d:

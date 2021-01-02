@@ -3,7 +3,6 @@ import time
 from playsound import playsound
 import threading
 import sys
-
 ovfont='vhiena strip shadow'
 ovbg='#101f2f';ovfg='#3caea3'
 root=tk.Tk()
