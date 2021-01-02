@@ -1,2 +1,2 @@
 # Teacher's Assistant
- Schppl Project
+ School Project
