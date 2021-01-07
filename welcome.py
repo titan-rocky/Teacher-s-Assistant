@@ -76,8 +76,9 @@ def welcometo(loginusername,loginpassword):
 
 
 	def detail():
+		welc.withdraw()
 		from student_details import st_details
-		stdetails()
+		st_details(welc_con)
 	def timetclick():
 		from timetable2 import timetab
 		timetab(welc_con)
