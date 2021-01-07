@@ -83,7 +83,7 @@ def click(sqlconnector,root):
 			userwrite=csv.writer(usercsv)
 			userwrite.writerow([cau,cap,caclass])
 			usercsv.close()
-			cac_querybox=[f'create user \'{str(cau)}\'@\'localhost\' identified by \'{str(cap)}\';',f'create database {str(cau)}_db ;',f'use {str(cau)}_db ;',f'GRANT ALL ON {str(cau)}_db.* TO \'{str(cau)}\'@\'localhost\';','flush privileges;','CREATE TABLE timet (Day_Period varchar(32),Period1 varchar(4),Period2 varchar(4),Period3 varchar(4),Break1 varchar(4),Period4 varchar(4),Period5 varchar(4),LunchB varchar(4),Period6 varchar(4),Period7 varchar(4),Break2 varchar(4),Period8 varchar(4),Period9 varchar(4));','INSERT INTO timet(Day_Period) VALUES(\'Monday\'),(\'Tuesday\'),(\'Wednesday\'),(\'Thursday\'),(\'Friday\') ;','CREATE TABLE attendence (studentname varchar(32),admn_no char(6) PRIMARY KEY);','update timet set LunchB=\'\'','update timet set Break1=\'\'','update timet set Break2=\'\'']
+			cac_querybox=[f'create user \'{str(cau)}\'@\'localhost\' identified by \'{str(cap)}\';',f'create database {str(cau)}_db ;',f'use {str(cau)}_db ;',f'GRANT ALL ON {str(cau)}_db.* TO \'{str(cau)}\'@\'localhost\';','flush privileges;','CREATE TABLE timet (Day_Period varchar(32),Period1 varchar(4),Period2 varchar(4),Period3 varchar(4),Break1 varchar(4),Period4 varchar(4),Period5 varchar(4),LunchB varchar(4),Period6 varchar(4),Period7 varchar(4),Break2 varchar(4),Period8 varchar(4),Period9 varchar(4));','INSERT INTO timet(Day_Period) VALUES(\'Monday\'),(\'Tuesday\'),(\'Wednesday\'),(\'Thursday\'),(\'Friday\') ;','CREATE TABLE attendence (studentname varchar(32),admn_no char(6) PRIMARY KEY);','update timet set LunchB=\'\'','update timet set Break1=\'\'','update timet set Break2=\'\'','CREATE TABLE student_details (studentname varchar(32),admn_no char(6) PRIMARY KEY,gender varchar(15),contact_no varchar(15),address varchar(100),blood_group varchar(3),disciplinary_records varchar(100))']
 			for i in cac_querybox:
 				print(i)
 				signcon_cur.execute(i)
@@ -105,10 +105,10 @@ def click(sqlconnector,root):
 					try:
 						signup_process(cau,cap,sqlconnector,creacc_cur,creacc)
 						return 1
+					
 					except mysql.connector.errors.DatabaseError:
 						creacc_d.config(text=f'Username {cau} already exists');creacc.update()
 						return 0
-
 				elif cap=='':
 					creacc_d.config(text='Enter a Valid Password')
 					creacc.update()

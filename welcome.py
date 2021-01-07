@@ -75,9 +75,9 @@ def welcometo(loginusername,loginpassword):
 		attn(welc_con,loginusername)
 
 
-	def fame():
-		from david import main
-		main()
+	def detail():
+		from student_details import st_details
+		stdetails()
 	def timetclick():
 		from timetable2 import timetab
 		timetab(welc_con)
@@ -104,7 +104,7 @@ def welcometo(loginusername,loginpassword):
 	attp.grid(row=3,column=1,pady=18)
 	attendb=tk.Button(welc_button_frame,text='Attendence',command=attendencefn,bg=welc_button_bg,fg=welc_button_fg,activebackground=welc_button_activebg,activeforeground=welc_button_activefg,font=(welc_button_font,welc_button_size),padx=20,pady=5)
 	attendb.grid(row=1,column=0,pady=10,padx=10,sticky='we')
-	msgb=tk.Button(welc_button_frame,text='Send Hw Message',command=fame,bg=welc_button_bg,fg=welc_button_fg,activebackground=welc_button_activebg,activeforeground=welc_button_activefg,font=(welc_button_font,welc_button_size),padx=20,pady=5)
+	msgb=tk.Button(welc_button_frame,text='Student Details',command=detail,bg=welc_button_bg,fg=welc_button_fg,activebackground=welc_button_activebg,activeforeground=welc_button_activefg,font=(welc_button_font,welc_button_size),padx=20,pady=5)
 	msgb.grid(row=1,column=1,pady=10,padx=10)
 	timetb=tk.Button(welc_button_frame,text='Class Time Table',command=timetclick,bg=welc_button_bg,fg=welc_button_fg,activebackground=welc_button_activebg,activeforeground=welc_button_activefg,font=(welc_button_font,welc_button_size),padx=20,pady=5)
 	timetb.grid(row=2,column=0,pady=10,padx=10)
