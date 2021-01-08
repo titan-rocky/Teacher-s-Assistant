@@ -18,6 +18,7 @@ def forgotpswd(root):
 	fps.config(bg='#101f2f')
 	fps.resizable(0,0)
 	fps.iconbitmap('icon.ico')
+	fps.title('Forgot Password')
 
 	bgd='#101f2f'
 
@@ -51,9 +52,9 @@ def forgotpswd(root):
 		gz=username.get()
 		fps.update()
 		username.delete(0,'end')
-		for i in l :
-			if i[0]==gz:
-				gg=1;k=i[2];
+		for p in l :
+			if p[0]==gz:
+				gg=1;k=p[2];
 				break
 		else:
 			if len(gz)==0:

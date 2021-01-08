@@ -18,6 +18,8 @@ def view_attn(sqlcon,user):
     dt.geometry('%dx%d+%d+%d'%(winwid,winhei,xcor,ycor))
     dt.config(background=bgd)
     dt.resizable(0,0)
+    dt.iconbitmap('icon.ico')
+    dt.title('View Attendence')
     #color
     canvas_color='#101f2f'
     frame1_color='#101f2f'
@@ -37,7 +39,7 @@ def view_attn(sqlcon,user):
     		info_frame.destroy()
     	flag=0
     	calendate=calendarobj.get_date().split('/')
-    	d=f'{calendate[1]}_{calendate[0]}_20{calendate[2]}';print(d)
+    	d=f'{calendate[1]}_{calendate[0]}_20{calendate[2]}'
     	m=sqlcon.cursor()
     	info_frame=tk.Frame(calenframe,bg=bgd);info_frame.grid(row=0,column=1,pady=10,padx=130)
     	try:
@@ -50,10 +52,10 @@ def view_attn(sqlcon,user):
 	    				absent+=1
 	    				absent_list.append(i[0])
     			return total,absent,absent_list
-    		k=countofstudents(k);print(k)
+    		k=countofstudents(k)
     		info1=tk.Label(info_frame,text=f'Total Number of Students  : {k[0]}',fg=fgd,bg=bgd);info1.grid(row=0,column=0)
     		info2=tk.Label(info_frame,text=f'Total Number of Absentees  : {k[1]}',fg=fgd,bg=bgd);info2.grid(row=1)
-    		jk=k[2]#' , '.join(k[2]);print(type(jk))
+    		jk=k[2]
     		info3=tk.Label(info_frame,text=f'Absentees  :',fg=fgd,bg=bgd);info3.grid(row=2,pady=3)
     		l1=[];l2=[]
     		for i in jk:
@@ -64,7 +66,6 @@ def view_attn(sqlcon,user):
     			elif i==jk[-1]:
     				l1.append(l2)
     				l2=[]
-    		print(l1)
     		
     		for p in range(len(l1)):
     			absframe=tk.Frame(info_frame,bg=bgd);absframe.grid(row=3+p)
@@ -75,14 +76,7 @@ def view_attn(sqlcon,user):
     		
 
     	except mysql.connector.Error as err:
-    		print(err.errno)
     		if err.errno==1054:
-    			'''
-    			dbk=info_frame.winfo_children();print(dbk)
-    			for widget in info_frame.winfo_children():
-    				widget.destroy()
-    				dt.update()
-    			'''
     			jbk=calendarobj.get_date();jbk=jbk.split('/');jbk[0],jbk[1]=jbk[1],jbk[0];jbk='/'.join(jbk)
 
     			info_frame=tk.Frame(calenframe,bg=bgd);info_frame.grid(row=0,column=1,pady=10,padx=130)
@@ -90,14 +84,22 @@ def view_attn(sqlcon,user):
     			info.grid(row=0,column=1)
 
 
+    butframe=tk.Frame(dt,bg=bgd);butframe.grid(row=2)
+    but1=tk.Button(butframe,text='Get Date',command=lambda : getdate(calen),fg='light cyan',bg=bgd,padx=25,font=('garamond',15))
+    but1.grid(row=0,column=1,padx=10)
+   
+    def on_back():
+        dt.destroy()
+        from attendence import attn
+        attn(sqlcon,sqlcon.user)
 
-    but1=tk.Button(dt,text='Get Date',command=lambda : getdate(calen),fg='light cyan',bg=bgd,padx=25,font=('garamond',15));but1.grid(row=2)
-    
+    but2= tk.Button(butframe,text='Back',fg='light cyan',bg=bgd,padx=25,font=('garamond',15),command=on_back)
+    but2.grid(row=0,column=2,padx=10)
+
     from tkinter import messagebox
     def onclose():
     	if messagebox.askokcancel('Quit','Do you want to quit ?') :
     		sys.exit()
-    		print('quit')
     dt.protocol('WM_DELETE_WINDOW',onclose)
     dt.mainloop()
 

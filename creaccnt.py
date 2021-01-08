@@ -55,7 +55,6 @@ def click(sqlconnector,root):
 
 	success=0
 	def cac_on_click():
-		time.sleep(0.7)
 		cau=cac_username.get()
 		cap=cac_password.get()
 
@@ -83,7 +82,7 @@ def click(sqlconnector,root):
 			userwrite=csv.writer(usercsv)
 			userwrite.writerow([cau,cap,caclass])
 			usercsv.close()
-			cac_querybox=[f'create user \'{str(cau)}\'@\'localhost\' identified by \'{str(cap)}\';',f'create database {str(cau)}_db ;',f'use {str(cau)}_db ;',f'GRANT ALL ON {str(cau)}_db.* TO \'{str(cau)}\'@\'localhost\';','flush privileges;','CREATE TABLE timet (Day_Period varchar(32),Period1 varchar(4),Period2 varchar(4),Period3 varchar(4),Break1 varchar(4),Period4 varchar(4),Period5 varchar(4),LunchB varchar(4),Period6 varchar(4),Period7 varchar(4),Break2 varchar(4),Period8 varchar(4),Period9 varchar(4));','INSERT INTO timet(Day_Period) VALUES(\'Monday\'),(\'Tuesday\'),(\'Wednesday\'),(\'Thursday\'),(\'Friday\') ;','CREATE TABLE attendence (studentname varchar(32),admn_no char(6) PRIMARY KEY);','update timet set LunchB=\'\'','update timet set Break1=\'\'','update timet set Break2=\'\'','CREATE TABLE student_details (studentname varchar(32),admn_no char(6) PRIMARY KEY,gender varchar(15),contact_no varchar(15),address varchar(100),blood_group varchar(3),disciplinary_records varchar(100))']
+			cac_querybox=[f'create user \'{str(cau)}\'@\'localhost\' identified by \'{str(cap)}\';',f'create database {str(cau)}_db ;',f'use {str(cau)}_db ;',f'GRANT ALL ON {str(cau)}_db.* TO \'{str(cau)}\'@\'localhost\';','flush privileges;','CREATE TABLE timet (Day_Period varchar(32),Period1 varchar(6),Period2 varchar(6),Period3 varchar(6),Break1 varchar(6),Period4 varchar(6),Period5 varchar(6),LunchB varchar(6),Period6 varchar(6),Period7 varchar(6),Break2 varchar(6),Period8 varchar(6),Period9 varchar(6));','INSERT INTO timet(Day_Period) VALUES(\'Monday\'),(\'Tuesday\'),(\'Wednesday\'),(\'Thursday\'),(\'Friday\') ;','CREATE TABLE attendence (studentname varchar(32),admn_no char(6) PRIMARY KEY);','update timet set LunchB=\'\'','update timet set Break1=\'\'','update timet set Break2=\'\'','CREATE TABLE student_details (studentname varchar(32),admn_no char(6) PRIMARY KEY,gender varchar(15),contact_no varchar(15),address varchar(100),blood_group varchar(3),disciplinary_records varchar(100))']
 			for i in cac_querybox:
 				print(i)
 				signcon_cur.execute(i)
@@ -132,7 +131,6 @@ def click(sqlconnector,root):
 
 	return_to_login=0
 	def cac_close():
-		time.sleep(1.7)
 		creacc.withdraw()
 		import login_page
 		login_page.login()

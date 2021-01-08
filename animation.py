@@ -6,6 +6,7 @@ import sys
 ovfont='vhiena strip shadow'
 ovbg='#101f2f';ovfg='#3caea3'
 root=tk.Tk()
+root.title('Teacher\'s Assistant')
 scwid=root.winfo_screenwidth()
 schei=root.winfo_screenheight()
 winwid=1200

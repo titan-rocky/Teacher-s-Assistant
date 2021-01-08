@@ -14,7 +14,7 @@ def take_attn(sqlcon,user):
     atte = Tk()
     atte.title('Attendence')
     atte.config(background='#101f2f')
-
+    atte.title('Take Attendence')
     scwid=atte.winfo_screenwidth()
     schei=atte.winfo_screenheight()
     winwid=515
@@ -104,7 +104,6 @@ def take_attn(sqlcon,user):
     def attend(connector,valuelist):
         svalue=[]
         for i in valuelist:
-            print(i,i.get())
             svalue.append(i.get())
         dk.config(text=f'{svalue}')
         q = "ALTER TABLE attendence ADD {0} varchar(1)".format(today)
@@ -119,7 +118,6 @@ def take_attn(sqlcon,user):
                 save=1
         except mysql.connector.Error as err:
             if err.errno==1060:
-                print(f'{today} record already exists')
                 btn.config(text=f'Record already exists for today',state='disabled',bg='#101f2f')
                 atte.update()
                 time.sleep(2)
@@ -131,25 +129,29 @@ def take_attn(sqlcon,user):
 
     for i in range(len(data)):
         cur=IntVar()
-        print(data[i][0].capitalize())
         Checkbutton(f2,text=f'{data[i][0].capitalize()}',variable=cur,font=('garamond',13,),fg='#001616',bg='light cyan',activeforeground='light cyan',activebackground='light cyan').grid(row=i,column=0,sticky='w')
         valuelist.append(cur)
     
-
+    def on_back():
+        atte.destroy()
+        from attendence import attn
+        attn(sqlcon,sqlcon.user)
 
 
     btn= Button(frame3,text='Save Attendence',font=('garamond',13),fg=button_fg,bg=button_bg,command=lambda : attend(sqlcon,valuelist))
-    btn.grid(row=4,column=0,pady=10)
+    btn.grid(row=4,column=0,pady=10,padx=10)
+    btn2= Button(frame3,text='Back',font=('garamond',13),fg=button_fg,bg=button_bg,command=on_back)
+    btn2.grid(row=4,column=1,pady=10,padx=10)
+
+
 
     def onclose():
-        print(save)
         if save==1:
             atte.destroy()
             from attendence import attn
             attn(sqlcon,user)
 
         elif messagebox.askokcancel('Quit','Do you want to quit without saving ?') :
-            print('quit')
             atte.destroy()
             
 
@@ -158,5 +160,5 @@ def take_attn(sqlcon,user):
     atte.mainloop()
 
 
-czv=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
-take_attn(czv,'jeff')
+#czv=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
+#take_attn(czv,'jeff')

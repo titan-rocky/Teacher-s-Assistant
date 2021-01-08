@@ -25,12 +25,14 @@ def timetab(mycon):
 	ttab=tk.Tk()
 	scwid=ttab.winfo_screenwidth()
 	schei=ttab.winfo_screenheight()
-	winwid=1050
+	winwid=1090
 	winhei=512
 	xcor=scwid/2-winwid/2-20
 	ycor=schei/2-winhei/2-30
-	ttab.geometry('1050x512+%d+%d'%(xcor,ycor))
+	ttab.geometry('%dx%d+%d+%d'%(winwid,winhei,xcor,ycor))
 	ttab.resizable(0,0)
+	ttab.title('Time Table')
+	ttab.iconbitmap('icon.ico')
 
 	heading=tk.Label(ttab,text='TIME TABLE',bg='#101f2f',fg='light blue',font=(heading_font,48));heading.grid(row=0,column=0,columnspan=2,pady=20)
 	h=tk.Label(ttab,text=mycon.user.capitalize(),bg='#101f2f',fg='cyan',font=(heading_font,25));h.grid(row=1,column=0)
@@ -62,7 +64,7 @@ def timetab(mycon):
 	for i in range(len(m)):
 		for j in range(len(m[i])):
 			if m[i][j]==None:
-				ab='N/A'
+				ab='    '
 			else:
 				ab=m[i][j]	
 			s=tk.Label(d,text=ab,fg='#101f2f',bg='#5FABFD',padx=25,pady=5,font=('sans',10))
@@ -83,5 +85,5 @@ def timetab(mycon):
 	jj.grid(row=4,column=0,columnspan=2,pady=10)
 	ttab.mainloop()
 
-mycon=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
-timetab(mycon)
+#mycon=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
+#timetab(mycon)
