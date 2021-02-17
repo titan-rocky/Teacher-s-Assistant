@@ -164,3 +164,5 @@ def login():
     root.protocol('WM_DELETE_WINDOW',onclose)
 
     tk.mainloop()
+
+login()

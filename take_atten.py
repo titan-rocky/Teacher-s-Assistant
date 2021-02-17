@@ -11,7 +11,7 @@ def take_attn(sqlcon,user):
     today = date.today()
     today=str(today.day)+'_'+str(today.month)+'_'+str(today.year)
 
-    atte = Tk()
+    atte = Toplevel()
     atte.title('Attendence')
     atte.config(background='#101f2f')
     atte.title('Take Attendence')
@@ -160,5 +160,5 @@ def take_attn(sqlcon,user):
     atte.mainloop()
 
 
-#czv=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
-#take_attn(czv,'jeff')
+czv=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
+take_attn(czv,'jeff')

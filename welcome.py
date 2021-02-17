@@ -102,7 +102,7 @@ def welcometo(loginusername,loginpassword):
 	import random
 	#button
 	attp=tk.Label(welc,wraplength=400,text=proverbs[random.randint(0,len(proverbs)-1)][4:],font=('garamond','12'),fg='white',bg=bgd)
-	attp.grid(row=3,column=1,pady=18)
+	attp.grid(row=3,column=1,pady=18,columnspan=3)
 	attendb=tk.Button(welc_button_frame,text='Attendence',command=attendencefn,bg=welc_button_bg,fg=welc_button_fg,activebackground=welc_button_activebg,activeforeground=welc_button_activefg,font=(welc_button_font,welc_button_size),padx=20,pady=5)
 	attendb.grid(row=1,column=0,pady=10,padx=10,sticky='we')
 	msgb=tk.Button(welc_button_frame,text='Student Details',command=detail,bg=welc_button_bg,fg=welc_button_fg,activebackground=welc_button_activebg,activeforeground=welc_button_activefg,font=(welc_button_font,welc_button_size),padx=20,pady=5)
