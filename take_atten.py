@@ -160,5 +160,5 @@ def take_attn(sqlcon,user):
     atte.mainloop()
 
 
-czv=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
-take_attn(czv,'jeff')
+#czv=mysql.connector.connect(user='jeff',password='thexactr',database='jeff_db')
+#take_attn(czv,'jeff')

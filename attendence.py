@@ -3,7 +3,6 @@ import csv
 import mysql.connector
 from tkinter import messagebox
 import sys
-#import pass
 
 
 def attn(sqlcon,user):

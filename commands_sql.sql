@@ -38,3 +38,13 @@ UPDATE student_details SET Father_name='Father3',gender='Female',contact_no='999
 UPDATE student_details SET address='AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',blood_group='AB-',disciplinary_records='2 Yellow Cards , 1 Red Card' WHERE admn_no='sabc4'
 SET SQL_SAFE_UPDATES = 0;
 
+
+
+
+
+use record
+CREATE TABLE PRODUCT (Pid char(10),Pname varchar(32),cost decimal(8,2))
+select * from student
+desc student
+drop table PRODUCT
+UPDATE student SET name='Andrew Darwin' where rollno='30'
